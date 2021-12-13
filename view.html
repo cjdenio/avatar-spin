@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      body {
+        background-color: rgb(36, 36, 36);
+      }
+
+      #img {
+        transition: transform 1s;
+        display: block;
+        margin: 0 auto;
+        height: 100vh;
+      }
+
+      #img.rotate {
+        transform: rotate(180deg);
+      }
+
+      #qr {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 400px;
+        filter: invert(1);
+      }
+    </style>
+  </head>
+  <body>
+    <img src="/aussie.jpg" id="img" />
+    <img src="/qr.png" id="qr" />
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+
+      socket.on("yeet", () => {
+        document.getElementById("img").classList.toggle("rotate");
+      });
+    </script>
+  </body>
+</html>
